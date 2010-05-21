@@ -15,11 +15,11 @@ $.Controller.extend('RouterController',
     }
 
     var key = event_name.replace(/^history(\.*)/, '/');
-    steal.dev.log('History event: ' + key);
+    //steal.dev.log('History event: ' + key);
 
     var foundRoute = Router.recognize(key);
     if (!foundRoute) {
-      steal.dev.log("WARNING: Router failed to find route for: " + key);
+      steal.dev.warn("WARNING: Router failed to find route for: " + key);
       return;
     }
     
@@ -34,7 +34,7 @@ $.Controller.extend('RouterController',
   "router.route_to subscribe": function(action_name, route_details) {
     var uri = route_details.uri;
 
-    steal.dev.log("ROUTER: Request to route to " + uri);
+    //steal.dev.log("ROUTER: Request to route to " + uri);
 
     //Remove /dev.php from the uri;
     if (RouterController.URLPrefix) {
@@ -55,7 +55,7 @@ $.Controller.extend('RouterController',
       window.location.href = uri + '#';
       return;
     } else {
-      steal.dev.log("ROUTER: Detected appropriate history point: " + uriWithHash);
+      //steal.dev.log("ROUTER: Detected appropriate history point: " + uriWithHash);
     }
 
     var components = window.location.href.split('#');

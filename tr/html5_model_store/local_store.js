@@ -88,5 +88,5 @@ if (('localStorage' in window) && ('sessionStorage' in window)) {
   });
   
 } else {
-  jQuery.Store.extend("HTMLLocalStore", {}, {});
+  jQuery.Model.Store.extend("HTMLLocalStore", {}, {});
 }

@@ -18,7 +18,7 @@ jQuery.Controller.extend("StateMachineController",
     
     // Initalize state machine
     this.moveToState("initial");
-    steal.dev.log("FSM (" + this.statePrefix + "): Initializing");
+    //steal.dev.log("FSM (" + this.statePrefix + "): Initializing");
   },
   
   "** subscribe": function(event_name) {
@@ -30,11 +30,11 @@ jQuery.Controller.extend("StateMachineController",
     var withoutNamespace = event_name.replace(this.statePrefix + ".", "");
     for(var transitionEvent in this.currentState()) {
       if (transitionEvent === withoutNamespace) {
-        steal.dev.log(this.statePrefix + " received " + transitionEvent + " while in state: " + this.currentStateName);
+        //steal.dev.log(this.statePrefix + " received " + transitionEvent + " while in state: " + this.currentStateName);
         
         var newTargetState = this.currentState()[transitionEvent];
         if (!this.states[newTargetState]) {
-          steal.dev.log(this.statePrefix + " tried to move to a state which is not defined: " + newTargetState);
+          steal.dev.warn(this.statePrefix + " tried to move to a state which is not defined: " + newTargetState);
           return;
         }
         
