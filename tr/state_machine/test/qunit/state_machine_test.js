@@ -1,6 +1,6 @@
 module("State Machine Controller");
 
-StateMachineController.extend("TestController", {
+TR.StateMachine.Controller.extend("TestController", {
 },
 {
   states: {
