@@ -45,8 +45,8 @@ $.Class.extend("TR.Router",
     //steal.dev.log("ROUTER: Request to route to " + uri);
 
     //Remove /dev.php from the uri;
-    if (this.Class.URLPrefix) {
-      var r = new RegExp(this.Class.URLPrefix);
+    if (this.URLPrefix) {
+      var r = new RegExp(this.URLPrefix);
       uri = uri.replace(r, '');
     }
     
@@ -77,7 +77,7 @@ $.Class.extend("TR.Router",
       }
     } else { //let's "redirect" to the appropriate javascriptmvc uri
       var cl = window.location;
-      var prefix = this.Class.URLPrefix || '';
+      var prefix = this.URLPrefix || '';
       window.location = cl.protocol + '//' + cl.hostname + prefix + uriWithHash;
     }
   }
