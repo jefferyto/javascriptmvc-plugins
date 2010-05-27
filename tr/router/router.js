@@ -32,7 +32,7 @@ $.Class.extend("TR.Router",
         return;
       }
       
-      this.currentParams = foundRoute.params;
+      TR.Router.currentParams = foundRoute.params;
       OpenAjax.hub.publish(foundRoute.destination, foundRoute.params);
     });
   },
