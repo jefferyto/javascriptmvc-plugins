@@ -3,7 +3,18 @@ steal.plugins("jquery/model/store", "jquery/model").then(function($) {
     steal.dev = steal.dev || { log: function(){} };
   }
 
-  if (('localStorage' in window) && ('sessionStorage' in window)) {
+  function hasLocalAndSessionStorageSupport() {
+    try {
+      return ((('localStorage'   in window) && window['localStorage']   !== null) &&
+              (('sessionStorage' in window) && window['sessionStorage'] !== null));
+    } catch(e) {
+      return false;
+    }
+  }
+
+  if (!hasLocalAndSessionStorageSupport()) { 
+    jQuery.Model.Store.extend("TR.HTML5ModelStore.Local", {}, {});
+  } else {
     jQuery.Class.extend("TR.HTML5ModelStore.Local", 
     {
       storageMethod:    "localStorage",
@@ -91,7 +102,5 @@ steal.plugins("jquery/model/store", "jquery/model").then(function($) {
 		  }
     });
     
-  } else {
-    jQuery.Model.Store.extend("TR.HTML5ModelStore.Local", {}, {});
   }
 });

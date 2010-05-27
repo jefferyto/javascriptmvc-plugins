@@ -34,8 +34,8 @@ steal.plugins('steal/openajax',
         return;
       }
       
+      this.Class.currentParams = foundRoute.params;
       this.publish(foundRoute.destination, foundRoute.params);
-      this.Class.currentParams = foundRoute;
     },
     
     /**
@@ -49,7 +49,7 @@ steal.plugins('steal/openajax',
 
       //Remove /dev.php from the uri;
       if (this.Class.URLPrefix) {
-        var r = new RegExp(RouterController.URLPrefix);
+        var r = new RegExp(this.Class.URLPrefix);
         uri = uri.replace(r, '');
       }
       
@@ -80,7 +80,7 @@ steal.plugins('steal/openajax',
         }
       } else { //let's "redirect" to the appropriate javascriptmvc uri
         var cl = window.location;
-        var prefix = RouterController.URLPrefix || '';
+        var prefix = this.Class.URLPrefix || '';
         window.location = cl.protocol + '//' + cl.hostname + prefix + uriWithHash;
       }
     }

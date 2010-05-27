@@ -1,1 +1,1 @@
-steal.then('controller/controller')
+steal.plugins('tr/state_machine/controller')
