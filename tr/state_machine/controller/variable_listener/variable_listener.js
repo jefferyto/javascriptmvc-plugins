@@ -1,4 +1,4 @@
-StateMachineController.extend('VariableListenerController',
+TR.StateMachine.Controller.extend('TR.StateMachine.Controller.VariableListener',
 {
   onDocument: true
 },

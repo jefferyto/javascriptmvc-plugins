@@ -1,4 +1,4 @@
-StateMachineController.extend('CommandController',
+TR.StateMachine.Controller.extend('TR.StateMachine.Controller.SerialCommand',
 {
   onDocument: true
 },
