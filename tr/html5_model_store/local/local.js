@@ -1,4 +1,4 @@
-steal.plugins("jquery/model/store", "jquery/model").then(function($) {
+steal.plugins("jquery/model/store", "jquery/model", "jquery/lang/json").then(function($) {
   if (steal.options.env == 'production') {
     steal.dev = steal.dev || { log: function(){} };
   }
@@ -43,7 +43,7 @@ steal.plugins("jquery/model/store", "jquery/model").then(function($) {
 	    
       findOne: function(id) {
         if (id && this.getById(id)) {
-          return new this.storing_class(JSON.parse(this.getById(id)));
+          return new this.storing_class($.parseJSON(this.getById(id)));
         } else {
           return null;
         }
@@ -51,7 +51,7 @@ steal.plugins("jquery/model/store", "jquery/model").then(function($) {
 	    
       create: function(obj, id){
 		    id = id || obj[obj.Class.id];
-		    this.setById(id, JSON.stringify(obj.attrs()));
+		    this.setById(id, $.toJSON(obj.attrs()));
 	    },
 	    
       destroy: function(id){
